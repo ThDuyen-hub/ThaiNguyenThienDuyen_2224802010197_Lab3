@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           key: _formKey,
           child: ListView(
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               Image.asset(
                 'assets/images/logo_sign_in.png',
                 width: 200,
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(
-                  labelText: "EmaIl",
+                  labelText: "Email",
                   border: OutlineInputBorder(), 
                 ),
                 validator: (value) {
@@ -98,8 +98,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         content: Text(success.toString()),
                       ),
                     );
-                  } else {
-                    print("NOT VALID");
                   }
                 },
                 child: const Text("Sign in"),

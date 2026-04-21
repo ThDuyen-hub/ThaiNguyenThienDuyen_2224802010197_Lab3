@@ -3,21 +3,32 @@ import 'package:dio/dio.dart';
 class ApiService {
   final Dio dio = Dio();
 
-  final String baseUrl = "https://69e5e79ace4e908a155e9fb6.mockapi.io/login/users";
+  final String baseUrl = "https://69e6f79268208c1debe81753.mockapi.io/users";
 
   Future<bool> login(String email, String password) async {
     try {
+      print("CALL API...");
+
       final response = await dio.get(baseUrl);
 
+      print("API RESPONSE:");
+      print(response.data);
+
       for (var user in response.data) {
+        print("CHECK USER: $user");
+
         if (user['email'] == email &&
             user['password'] == password) {
+          print("MATCH FOUND");
           return true;
         }
       }
+
+      print("NO MATCH");
       return false;
+
     } catch (e) {
-      print(e);
+      print("API ERROR: $e");
       return false;
     }
   }
